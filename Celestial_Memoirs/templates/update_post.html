@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="new_entry_container">
+    <legend class="border-bottom mb-4">{{ legend }}</legend>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <h2 class="mr-2">{{ form.date.data.strftime('%d-%b-%Y') }}</h2>
+        </div>
+        <div class="date">
+            {{ form.content.label(class="form-control-label") }}
+        </div>
+        {% if form.content.errors %}
+        {{ form.content(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+            {% for error in form.content.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ form.content(class="mb-2 form-control form-control-lg") }}
+        {% endif %}
+        <button class="btn" type="submit">
+            <div id="container-stars">
+                <div id="stars"></div>
+            </div>
+
+            <div id="glow">
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+
+            {{ form.submit(class="submit-btn") }}
+        </button>
+
+{% endblock content %}

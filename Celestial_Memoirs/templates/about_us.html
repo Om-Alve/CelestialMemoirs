@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="website-name-container">
+    <button data-text="Awesome" class="button">
+        <span class="actual-text">&nbsp;Celestial_Memoirs!!!&nbsp;</span>
+        <span class="hover-text" aria-hidden="true">&nbsp;Celestial_Memoirs!!!&nbsp;</span>
+    </button>
+</div>
+
+<div class="about-text">
+    Welcome to Celestial Memoirs, a unique online platform designed to preserve your personal thoughts and experiences
+    in the ethereal realm of digital diaries. Our website serves as a safe haven for individuals seeking to document
+    their innermost reflections, captivating adventures, and heartfelt emotions.
+
+    At Celestial Memoirs, we believe that writing is a powerful tool for self-expression and introspection. Our purpose
+    is to provide a serene virtual space where you can unlock the doors to your soul and record your life's journey.
+    Whether you're seeking solace, looking to reminisce, or simply longing to capture fleeting moments, our website is
+    here to accompany you on this celestial odyssey.
+
+    So, whether you're an avid writer, an aspiring poet, or someone seeking solace in words, Celestial Memoirs invites
+    you to embark on an intimate and transformative journey of self-discovery. Join us as we illuminate the vast cosmos
+    of memories and emotions, one diary entry at a time. Start your celestial memoir today and etch your
+    legacy in the stars.
+</div>
+
+
+<div class="buttons-container">
+    <div class="button-1">
+        <a href="{{url_for('register')}}">
+            <button class="btn" type="button">
+                <strong> Sign Up!!</strong>
+                <div id="container-stars">
+                    <div id="stars"></div>
+                </div>
+
+                <div id="glow">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
+            </button>
+        </a>
+    </div>
+    <div class="button-2">
+        <a href="{{url_for('login')}}">
+            <button class="btn" type="button">
+                <strong> Sign In!!</strong>
+                <div id="container-stars">
+                    <div id="stars"></div>
+                </div>
+
+                <div id="glow">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
+            </button>
+        </a>
+    </div>
+</div>
+{% endblock content %}

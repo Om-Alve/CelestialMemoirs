@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <h2 class="mr-2">{{ entry.date.strftime('%d-%b-%Y') }}</h2>
+    </div>
+    <p class="article-content">{{ entry.content }}</p>
+  </div>
+  {% if entry.author == current_user %}
+  <div>
+    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('update_entry', entry_id=entry.id) }}">Update</a>
+    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{{ url_for('delete_entry', entry_id=entry.id) }}">Delete</a>
+  </div>
+  {% endif %}
+</article>
+{% endblock content %}

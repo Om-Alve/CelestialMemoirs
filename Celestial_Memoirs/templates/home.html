@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="cards-container">
+  {% for entry in entries %}
+
+  <a href="{{ url_for('entry', entry_id=entry.id) }}" class="myCard">
+    <div class="innerCard">
+      <div class="frontSide">
+        <div class="title-f">
+          <p class="mr-2" style="font-weight: bold;">{{ entry.date.strftime('%d-%b-%Y') }}</p>
+        </div>
+      </div>
+      <div class="backSide">
+        <div class="title-b">
+          <p class="article-content">{{ entry.content[:80] + "....." }}</p>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  {% endfor %}
+</div>
+{% endblock content %}

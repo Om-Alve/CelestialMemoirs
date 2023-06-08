@@ -1,0 +1,37 @@
+{%extends 'layout.html' %}
+{%block content%}
+
+<form class="form" method="POST">
+  {{form.hidden_tag()}}
+  <div class="form-title"><span>Create your own</span></div>
+   <div class="title-2"><span>SPACE</span></div>
+
+   <div class="input-container">
+     {{form.username(class="input-text",placeholder="Enter Username")}}
+   </div>
+
+   <div class="input-container">
+     {{form.email(class="input-text",placeholder="Enter Email")}}
+   </div>
+
+   <section class="bg-stars">
+     <span class="star"></span>
+     <span class="star"></span>
+     <span class="star"></span>
+     <span class="star"></span>
+   </section>
+
+   <div class="input-container">
+     {{form.password(class="input-pwd",placeholder="Enter Password")}}
+   </div>
+   <div class="input-container">
+     {{form.confirm_password(class="input-pwd",placeholder="Confirm Password")}}
+   </div>
+   {{form.submit(class="submit sign-text")}}
+   <p class="signup-link">
+     Already have an account?
+     <a href="{{url_for('login')}}" class="up">Sign in!</a>
+   </p>
+    
+</form>
+{% endblock content%}
