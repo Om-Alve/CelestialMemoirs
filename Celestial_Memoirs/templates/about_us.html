@@ -87,39 +87,40 @@
     legacy in the stars.
 </div>
 
+{% if not current_user.is_authenticated %}
+    <div class="buttons-container">
+        <div class="button-1">
+            <a href="{{url_for('register')}}">
+                <button class="btn" type="button">
+                    <strong> Sign Up!!</strong>
+                    <div id="container-stars">
+                        <div id="stars"></div>
+                    </div>
 
-<div class="buttons-container">
-    <div class="button-1">
-        <a href="{{url_for('register')}}">
-            <button class="btn" type="button">
-                <strong> Sign Up!!</strong>
-                <div id="container-stars">
-                    <div id="stars"></div>
-                </div>
+                    <div id="glow">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                    </div>
+                </button>
+            </a>
+        </div>
+        <div class="button-2">
+            <a href="{{url_for('login')}}">
+                <button class="btn" type="button">
+                    <strong> Log In!!</strong>
+                    <div id="container-stars">
+                        <div id="stars"></div>
+                    </div>
 
-                <div id="glow">
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                </div>
-            </button>
-        </a>
+                    <div id="glow">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                    </div>
+                </button>
+            </a>
+        </div>
     </div>
-    <div class="button-2">
-        <a href="{{url_for('login')}}">
-            <button class="btn" type="button">
-                <strong> Sign In!!</strong>
-                <div id="container-stars">
-                    <div id="stars"></div>
-                </div>
-
-                <div id="glow">
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                </div>
-            </button>
-        </a>
-    </div>
-</div>
+{%endif%}
 </body>
 
 </html>

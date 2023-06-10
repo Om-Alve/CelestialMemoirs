@@ -2,6 +2,10 @@
 a:hover {
   text-decoration: none;
 }
+.navbar{
+  font-family: Orbitron;
+  background-color: rgb(37, 37, 37);
+}
 .form {
   position: relative;
   display: inline-block;
@@ -644,15 +648,6 @@ a:hover {
   left: initial;
   animation-delay: 1.6s;
   animation-duration: 1.6s;
-}
-
-
-
-
-/* Stylesheet for about us page */
-.about_us_page {
-  background-image: url(/Celestial_Memoirs/Images/earth-1756274_1280.webp);
-  background-size: cover;
 }
 
 
@@ -926,23 +921,6 @@ strong {
 
 }
 
-.header {
-  display: flex;
-  flex-direction: row;
-  background-color: rgb(37, 37, 37);
-  color: white;
-  height: 60px;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  justify-content: space-between;
-  align-items: center;
-  opacity: 0.9;
-  margin-bottom: 20px;
-  z-index: 1;
-}
-
 .glow {
   margin-left: 40px;
   font-family: Orbitron;
@@ -962,77 +940,6 @@ strong {
     text-shadow: 0 0 5px #dadada, 0 0 10px #dadada,0 0 15px #dadada;
   }
 }
-
-
-
-
-.left-section{
-  display: flex;
-  /* background-color: rgb(33, 205, 99); */
-  /* flex: 1; */
-  align-items: center;
-}
-
-.site_name {
-  font-size: 24px;
-  margin-left: 50px;
-  font-family: orbitron;
-}
-
-.home {
-  font-family: Orbitron;
-  margin-left: 40px;
-  font-size: 17px;
-  color: rgb(255, 255, 255);
-  font-weight: 500;
-}
-.home:hover {
-  transform: scale(1.2);
-  cursor: pointer;
-}
-
-.about{
-  font-family: Orbitron;
-  font-size: 17px;
-  margin-left: 40px;
-  font-weight: 500;
-}
-.about:hover {
-  transform: scale(1.2);
-  cursor: pointer;
-}
-
-.right-section{
-  display: flex;
-  /* background-color: blue; */
-  align-items: center;
-  /* flex: 1; */
-  flex-shrink: 0;
-}
-
-.new-post {
-  font-family: Orbitron;
-  font-size: 17px;
-  margin-right: 50px;
-  font-weight: 500;
-  cursor: pointer;
-}
-.new-post:hover {
-  transform: scale(1.2);
-}
-
-.logout{
-  font-family: Orbitron;
-  font-size: 17px;
-  margin-right: 50px;
-  font-weight: 500;
-}
-.logout:hover {
-  transform: scale(1.3);
-  cursor: pointer;
-}
-
-
 
 
 /* Stylesheet for cool_animation  */
@@ -1263,9 +1170,6 @@ strong {
   margin-bottom: 3px;
 }
 
-.date_box {
-  width: 100px;
-}
 
 .content {
   font-size: 20px;
@@ -1445,12 +1349,16 @@ strong {
 
 .textarea {
   border: 1px solid #000000;
-  font-family: inherit;
-  font-size: 18px;
+  font-family: Roboto;
+  font-size: 10px;
   padding: 1px 6px;
   color: black;
-  margin-top: 7px;
   max-height: 140px;
+}
+
+.form-control,.form-control-lg{
+  font-family: Roboto;
+  height:150px;
 }
 
 .textarea {
@@ -1460,7 +1368,6 @@ strong {
   resize: both;
   min-height: 40px;
   line-height: 20px;
-  padding-top: 5px;
 }
 
 .textarea[contenteditable]:empty::before {
@@ -1471,9 +1378,7 @@ strong {
 .content_text {
   color: black;
   font-weight: 550;
-  font-size: 25px;
-  margin-top: 30px;
-  
+  font-size: 20px; 
 }
 
 .submit-btn {
@@ -1730,9 +1635,7 @@ strong {
 .content_text {
   color: black;
   font-weight: 550;
-  font-size: 25px;
-  margin-top: 30px;
-  
+  font-size: 18px;
 }
 
 

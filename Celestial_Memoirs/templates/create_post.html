@@ -10,7 +10,7 @@
         <div class="date">
             Date
         </div>
-        <div class="date_box">
+        <div class="">
             {% if form.date.errors %}
             {{ form.date(class="form-control form-control-lg is-invalid") }}
             <div class="invalid-feedback">
@@ -19,7 +19,7 @@
                 {% endfor %}
             </div>
             {% else %}
-            {{ form.date(class="date_box mb-2") }}
+            {{ form.date() }}
             {% endif %}
         </div>
         <div class="date">
@@ -33,7 +33,7 @@
             {% endfor %}
         </div>
         {% else %}
-        {{ form.content(class="mb-2 form-control form-control-lg") }}
+        {{ form.content(class="mb-2 form-control form-control-lg content_text",placeholder="How was your day?") }}
         {% endif %}
         <!-- <div class="btn"> -->
         <button class="btn" type="submit">
