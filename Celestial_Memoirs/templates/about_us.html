@@ -1,6 +1,70 @@
-{% extends "layout.html" %}
-{% block content %}
-<div class="website-name-container">
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/general.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/website-name.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/cool_animation.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <script>
+  </script>
+</head>
+
+<body
+  style="background-image: url({{url_for('static', filename='Images/home-image.jpg') }});background-size:cover;">
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand mr-4" href="/">
+          <div class="glow">
+            Celestial_Memoirs
+          </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+          aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+          <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>
+            <a class="nav-item nav-link" href="{{ url_for('about') }}">About</a>
+          </div>
+          <!-- Navbar Right Side -->
+          <div class="navbar-nav">
+            {% if current_user.is_authenticated %}
+            <a class="nav-item nav-link" href="{{ url_for('new_entry') }}">New Post</a>
+            <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+            <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
+            <a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }}">
+      {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+  </div>
+  <div class="website-name-container">
     <button data-text="Awesome" class="button">
         <span class="actual-text">&nbsp;Celestial_Memoirs!!!&nbsp;</span>
         <span class="hover-text" aria-hidden="true">&nbsp;Celestial_Memoirs!!!&nbsp;</span>
@@ -56,4 +120,6 @@
         </a>
     </div>
 </div>
-{% endblock content %}
+</body>
+
+</html>
