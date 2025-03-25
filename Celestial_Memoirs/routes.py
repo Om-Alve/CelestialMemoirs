@@ -5,7 +5,9 @@ from Celestial_Memoirs.models import Users,Entries
 from Celestial_Memoirs import bcrypt,db
 from flask_login import login_user,current_user,logout_user,login_required
 from sqlalchemy.sql.expression import desc
+from Celestial_Memoirs.sentiment_analysis import SentimentAnalyzer
 
+sentiment_analyzer = SentimentAnalyzer()
 
 
 @app.route('/')
@@ -61,13 +63,13 @@ def logout():
 def new_entry():
     form = PostForm()
     if form.validate_on_submit():
-        entry = Entries(date=form.date.data, content=form.content.data, author=current_user)
+        sentiment = sentiment_analyzer.analyze_sentiment(form.content.data)  # Analyze sentiment
+        entry = Entries(date=form.date.data, content=form.content.data, sentiment=sentiment, author=current_user)
         db.session.add(entry)
         db.session.commit()
         flash('Your post has been created!', 'success')
         return redirect(url_for('home'))
-    return render_template('create_post.html',
-                           form=form, legend='New Post')
+    return render_template('create_post.html', form=form, legend='New Post')
 
 
 @app.route('/entry/<int:entry_id>')
@@ -78,7 +80,7 @@ def entry(entry_id):
         return redirect(url_for('home'))
     return render_template('entry.html',entry=entry)
 
-@app.route('/entry/<int:entry_id>/update',methods=['GET','POST'])
+@app.route('/entry/<int:entry_id>/update', methods=['GET', 'POST'])
 @login_required
 def update_entry(entry_id):
     form = PostForm()
@@ -87,14 +89,14 @@ def update_entry(entry_id):
         return redirect(url_for('home'))
     if form.validate_on_submit():
         entry.content = form.content.data
+        entry.sentiment = sentiment_analyzer.analyze_sentiment(form.content.data)  # Re-analyze sentiment
         db.session.commit()
         flash('Your post has been updated!', 'success')
-        return redirect(url_for('entry',entry_id=entry_id))
+        return redirect(url_for('entry', entry_id=entry_id))
     elif request.method == 'GET':
         form.date.data = entry.date
         form.content.data = entry.content
-    return render_template('update_post.html',
-                           form=form, legend='Update Post')
+    return render_template('update_post.html', form=form, legend='Update Post')
 
 @app.route("/entry/<int:entry_id>/delete", methods=['POST','GET'])
 @login_required

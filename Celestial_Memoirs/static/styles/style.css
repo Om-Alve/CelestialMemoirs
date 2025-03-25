@@ -1014,13 +1014,12 @@ strong {
 
 .cards-container {
   display: grid;
-  grid-template-columns: 100px 100px 100px 100px 100px ;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   margin-top: 75px;
-  /* margin-right: 10px; */
   column-gap: 160px;
 }
 
-.myCard{
+.myCard {
   background-color: transparent;
   width: 200px;
   height: 170px;
@@ -1054,10 +1053,8 @@ strong {
   cursor: pointer;
 }
 
-
-
 .myCard:hover .innerCard {
-  transform: rotateY(180deg);;
+  transform: rotateY(180deg);
 }
 
 .frontSide,
@@ -1078,6 +1075,11 @@ strong {
   font-weight: 400;
 }
 
+/* Remove existing gradient backgrounds to prepare for sentiment-based styling */
+/* .frontSide and .backSide will be styled based on sentiment classes */
+
+/* Remove or comment out these if you plan to override them completely */
+/*
 .frontSide,
 .frontSide::before {
   background: linear-gradient(43deg, rgb(58, 77, 171) 10%, rgb(121, 83, 182) 40%, rgb(8, 8, 8) 80%);
@@ -1087,6 +1089,7 @@ strong {
 .backSide::before {
   background-image: linear-gradient(160deg, #18191a 10%, rgb(121, 83, 182) 40%, rgb(58, 77, 171)80%);
 }
+*/
 
 .backSide {
   transform: rotateY(180deg);
@@ -1122,16 +1125,79 @@ strong {
 }
 
 @media (max-width: 750px) {
-  .cards-container{
-    grid-template-columns: 100px 100px 100px;
-  }
-}
-@media (min-width: 1000px) {
-  .cards-container{
-    grid-template-columns: 100px 100px 100px 100px 100px;
+  .cards-container {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    column-gap: 80px; /* Adjusted gap for smaller screens */
   }
 }
 
+@media (min-width: 1000px) {
+  .cards-container {
+    grid-template-columns: repeat(5, 1fr); /* Adjusted to use fractions for responsiveness */
+    column-gap: 160px;
+  }
+}
+
+/* Happy Sentiment Styles */
+.myCard.happy .frontSide {
+  background: linear-gradient(43deg, #28a745 10%, #218838 40%, #145214 80%); /* Green shades */
+}
+
+.myCard.happy .backSide {
+  background: linear-gradient(160deg, #1e7e34 10%, #28a745 40%, #218838 80%); /* Complementary green shades */
+}
+
+.myCard.happy .frontSide::before {
+  background: linear-gradient(43deg, rgba(40, 167, 69, 0.6) 10%, rgba(33, 136, 56, 0.6) 40%, rgba(20, 82, 20, 0.6) 80%);
+}
+
+.myCard.happy .backSide::before {
+  background-image: linear-gradient(160deg, rgba(30, 126, 52, 0.6) 10%, rgba(40, 167, 69, 0.6) 40%, rgba(33, 136, 56, 0.6) 80%);
+}
+
+/* Neutral Sentiment Styles */
+.myCard.neutral .frontSide {
+  background: linear-gradient(43deg, #17a2b8 10%, #138496 40%, #0c5460 80%); /* Blue shades */
+}
+
+.myCard.neutral .backSide {
+  background: linear-gradient(160deg, #117a8b 10%, #17a2b8 40%, #138496 80%); /* Complementary blue shades */
+}
+
+.myCard.neutral .frontSide::before {
+  background: linear-gradient(43deg, rgba(23, 162, 184, 0.6) 10%, rgba(19, 132, 150, 0.6) 40%, rgba(12, 84, 96, 0.6) 80%);
+}
+
+.myCard.neutral .backSide::before {
+  background-image: linear-gradient(160deg, rgba(17, 122, 139, 0.6) 10%, rgba(23, 162, 184, 0.6) 40%, rgba(19, 132, 150, 0.6) 80%);
+}
+
+/* Sad Sentiment Styles */
+.myCard.sad .frontSide {
+  background: linear-gradient(43deg, #dc3545 10%, #c82333 40%, #991b1b 80%); /* Red shades */
+}
+
+.myCard.sad .backSide {
+  background: linear-gradient(160deg, #bd2130 10%, #dc3545 40%, #c82333 80%); /* Complementary red shades */
+}
+
+.myCard.sad .frontSide::before {
+  background: linear-gradient(43deg, rgba(220, 53, 69, 0.6) 10%, rgba(200, 35, 51, 0.6) 40%, rgba(153, 27, 27, 0.6) 80%);
+}
+
+.myCard.sad .backSide::before {
+  background-image: linear-gradient(160deg, rgba(189, 33, 48, 0.6) 10%, rgba(220, 53, 69, 0.6) 40%, rgba(200, 35, 51, 0.6) 80%);
+}
+
+/* Optional: Adjust Text Color for Better Contrast */
+.myCard.happy .frontSide,
+.myCard.happy .backSide,
+.myCard.neutral .frontSide,
+.myCard.neutral .backSide,
+.myCard.sad .frontSide,
+.myCard.sad .backSide {
+  color: white; /* Ensure text is readable against background */
+}
 
 
 /* General style */

@@ -1,9 +1,114 @@
 {% extends "layout.html" %}
+
 {% block content %}
-<article class="media content-section">
+<style>
+  .content-section {
+    background: #fff9f0;
+    padding: 30px 40px;
+    border: none;
+    border-radius: 0;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    font-family: 'Georgia', serif;
+    
+    /* Notebook paper effect */
+    background-image: 
+      linear-gradient(#fff9f0 1.1rem, #ccc 1.2rem),
+      linear-gradient(90deg, transparent 39px, #d88 40px, #d88 41px, transparent 42px);
+    background-size: 100% 1.2rem;
+    line-height: 1.2rem;
+    padding-left: 60px;
+  }
+  /* Red margin line */
+  .content-section::before {
+    content: '';
+    position: absolute;
+    left: 40px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #d88;
+  }
+
+  .article-metadata {
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e3e3e3;
+  }
+
+  .article-metadata h2 {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin: 0;
+    padding-top: 10px;
+  }
+
+  .article-content {
+    white-space: pre-line;
+    color: #34495e;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    padding-bottom: 20px;
+  }
+
+  /* Button styling overrides */
+  .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .mt-1 {
+    margin-top: 0.25rem !important;
+  }
+
+  .mb-1 {
+    margin-bottom: 0.25rem !important;
+  }
+
+  .btn-secondary {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+
+  .btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+
+  .btn-secondary:hover {
+    color: #fff;
+    background-color: #5a6268;
+    border-color: #545b62;
+    text-decoration: none;
+  }
+
+  .btn-danger:hover {
+    color: #fff;
+    background-color: #c82333;
+    border-color: #bd2130;
+    text-decoration: none;
+  }
+
+  body {
+    background-image: url(/Images/DALL·E_2023_06_01_13_00_04_Design_a_captivating_background_image.png);
+    background-size: cover;
+    margin-top: 5rem;
+  }
+</style>
+
+<article class="content-section">
   <div class="media-body">
     <div class="article-metadata">
-      <h2 class="mr-2">{{ entry.date.strftime('%d-%b-%Y') }}</h2>
+      <h2 class="mr-2">{{ entry.date.strftime('%d-%b-%Y') }} ({{ entry.sentiment }})</h2>
     </div>
     <p class="article-content">{{ entry.content }}</p>
   </div>
